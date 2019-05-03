@@ -16,7 +16,7 @@
 % John M. O' Toole, University College Cork
 % Started: 06-06-2018
 %
-% last update: Time-stamp: <2019-05-03 15:15:40 (otoolej)>
+% last update: Time-stamp: <2019-05-03 16:56:33 (otoolej)>
 %-------------------------------------------------------------------------------
 function []=plot_FD_examples()
 
@@ -46,8 +46,8 @@ set(gcf, 'position', [pp(1:2) 700  200]);
 
 % colours and fonts:
 lc = lines(8);
-fill_col = lc(2, :);
-edge_col = lc(8, :);
+fill_col = lc(7, :);
+edge_col = lc(1, :);
 FONT_NAME = 'helvetica';
 FONT_SIZE = 10;
 

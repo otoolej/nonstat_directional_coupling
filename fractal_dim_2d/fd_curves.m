@@ -1,16 +1,26 @@
 %-------------------------------------------------------------------------------
-% fd_curves: fractal dimension for planar curves
+% fd_curves: fractal dimension for planar curves using modified version of the 
+%            Higuchi method [1,2]. See [3] for more details.
 %
-% Syntax: D = fd_curves(x,y,kmax)
+% Syntax: D = fd_curves(x, y, kmax, DBplot)
 %
 % Inputs: 
-%     x,y,type - 
-%
+%     x       - length-N signal from 2D (x,y) signal
+%     y       - length-N signal
+%     type    - maximum scale value; default = N/10
+%     DBplot  - switch for plotting [0/1]; default = 0;
+% 
 % Outputs: 
-%     D - 
+%     D - fractal dimension estimate
 %
 % Example:
-%     
+%     N = 200;
+%     x = cumsum(randn(1, N)); 
+%     y = cumsum(randn(1, N)); 
+% 
+%     kmax = 6;
+%     D = fd_curves(x, y, kmax, 1);
+% 
 %
 % [1] T. Higuchi, “Approach to an irregular time series on the basis of the fractal
 % theory,” Phys. D Nonlinear Phenom., vol. 31, pp. 277–283, 1988.
@@ -27,9 +37,9 @@
 % John M. O' Toole, University College Cork
 % Started: 30-05-2018
 %
-% last update: Time-stamp: <2019-05-03 14:50:50 (otoolej)>
+% last update: Time-stamp: <2019-05-03 15:38:43 (otoolej)>
 %-------------------------------------------------------------------------------
-function [D, r2] = fd_curves(x, y, kmax, DBplot)
+function D = fd_curves(x, y, kmax, DBplot)
 if(nargin < 3 || isempty(kmax)), kmax = []; end
 if(nargin < 4 || isempty(DBplot)), DBplot = 0; end
 
@@ -95,26 +105,33 @@ D = nanmedian(D_k);
 if(DBplot)
     x1 = log(k_all); 
     y1 = log(L_avg);        
-    
     c = polyfit(x1, y1, 1);
-    dispVars(-c(1));
-
-    set_figure(56);
+    
+    set_figure(56); clf;
+    lc = lines(8);    
     subplot(2, 1, 1); hold all;        
-    plot(x1, y1, 'o');
     xfit = linspace(min(x1), max(x1));
-    plot(xfit, polyval(c, xfit), '-');
+    plot(xfit, polyval(c, xfit), '-', 'color', lc(6, :));
+    hl(1) = plot(x1, y1, 'o');
     xlabel('log(k)');
     ylabel('log[ L(k) ]');    
     
     subplot(2, 1, 2); hold all;
     D_k = -diff(y1) ./ diff(x1);
-    fprintf('median D(k) = %g\n',nanmedian(D_k));
+    D = nanmedian(D_k);
+    fprintf('median D(k) = %g\n',D);
 
-    plot(x1(1:end - 1), D_k, '*');
-    line(xlim, [1 1] .* nanmedian(D_k));
+    line([0 x1(end)], [1 1] .* D, 'linestyle', '--', ...
+         'linewidth', 2, 'color', lc(6, :));
+    hl(2) = plot(x1(1:end - 1), D_k, 's', 'markersize', 6);    
+    set(hl, 'markerfacecolor', lc(7, :), 'color', lc(7, :));    
+    ys = ylim;
+    if(ys(1) > 0.95)
+        ylim([0.95 ys(2)]);
+    end
     xlabel('log(k)');
     ylabel('D(k)');    
+    
     
 end
 
