@@ -9,6 +9,25 @@ preparation, 2019.`
 
 
 
+# Functions
+
+  * 2D fractal measure: fd_curves.m
+  * Hjorth parameters: hjorth_feats.m
+  * 
+
+
+# Examples
+
+To generate the 4 time-varying bi-variate autoregressive examples and plot (Figure 3):
+
+```
+>> gen_STiPDC_all_signals();
+```
+
+Plot examples for 2D fractal dimension measure (extension of the Higuchi approach)
+```
+plot_FD_examples()
+```
 
 # Files
 

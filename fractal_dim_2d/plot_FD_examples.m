@@ -16,9 +16,9 @@
 % John M. O' Toole, University College Cork
 % Started: 06-06-2018
 %
-% last update: Time-stamp: <2019-05-03 16:56:33 (otoolej)>
+% last update: Time-stamp: <2019-05-13 15:42:55 (otoolej)>
 %-------------------------------------------------------------------------------
-function []=plot_FD_examples()
+function [] = plot_FD_examples()
 
 %---------------------------------------------------------------------
 % 1. generate the signals
