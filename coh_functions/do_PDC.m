@@ -43,7 +43,7 @@
 % John M. O' Toole, University College Cork
 % Started: 31-08-2017
 %
-% last update: Time-stamp: <2019-05-13 15:37:45 (otoolej)>
+% last update: Time-stamp: <2019-05-21 13:24:25 (otoolej)>
 %-------------------------------------------------------------------------------
 function [pdc_st] = do_PDC(x_all, N_freq, DBplot)
 if(nargin < 2 || isempty(N_freq)), N_freq = 128; end
