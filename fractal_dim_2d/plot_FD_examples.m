@@ -22,7 +22,7 @@
 % John M. O' Toole, University College Cork
 % Started: 06-06-2018
 %
-% last update: Time-stamp: <2019-05-22 13:13:53 (otoolej)>
+% last update: Time-stamp: <2019-10-04 11:12:09 (otoolej)>
 %-------------------------------------------------------------------------------
 function [] = plot_FD_examples()
 
@@ -80,6 +80,15 @@ txy = [xs(1) ys(1); xs(2) ys(1); xs(3) ys(1)];
 for n = 1:L
     ht(n) = text(hx(1), txy(n, 1), txy(n, 2), ['D=' sprintf('%.1f', D(n))], ...
                  'fontname', FONT_NAME, 'fontsize', FONT_SIZE);
+end
+
+
+%---------------------------------------------------------------------
+% for docker testing
+%---------------------------------------------------------------------
+PRINT_PNG = 1;
+if(PRINT_PNG)
+    print('./pics/docker_tests/FD_examples.png', '-dpng');
 end
 
 

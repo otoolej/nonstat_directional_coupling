@@ -24,7 +24,7 @@
 % John M. O' Toole, University College Cork
 % Started: 28-06-2018
 %
-% last update: Time-stamp: <2019-05-22 15:49:02 (otoolej)>
+% last update: Time-stamp: <2019-10-04 11:15:45 (otoolej)>
 %-------------------------------------------------------------------------------
 function [] = estimate_IF_STiPDC_example()
 
@@ -134,12 +134,17 @@ ylabel('frequency (Hz)');
 set(gca, 'ytick', [0.1:0.1:0.5]);
 ylim([0 0.5]);
 
-keyboard;
 hleg = legend([hl(end) hest hfn], {'IF estimate (each iteration)', ...
                     'IF estimate (mean)', 'true IF'});
 hleg.Position = [0.2741 0.2528 0.4778 0.2174];
 hleg.Box = 'off';
 
 
-
+%---------------------------------------------------------------------
+% for docker testing
+%---------------------------------------------------------------------
+PRINT_PNG = 1;
+if(PRINT_PNG)
+    print('./pics/docker_tests/estimate_IF_STiPDC_fig.png', '-dpng');
+end
 

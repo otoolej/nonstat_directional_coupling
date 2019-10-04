@@ -23,7 +23,7 @@
 % John M. O' Toole, University College Cork
 % Started: 07-05-2019
 %
-% last update: Time-stamp: <2019-05-21 18:44:54 (otoolej)>
+% last update: Time-stamp: <2019-10-04 11:09:05 (otoolej)>
 %-------------------------------------------------------------------------------
 function [] = gen_STiPDC_all_signals()
 
@@ -177,5 +177,10 @@ end
 set(hs, 'FontName', FONT_NAME, 'FontSize', FONT_SIZE);
 
 
-
-
+%---------------------------------------------------------------------
+% for docker testing
+%---------------------------------------------------------------------
+PRINT_PNG = 1;
+if(PRINT_PNG)
+    print(['./pics/docker_tests/coh_num_eg_fig' num2str(fig_num) '.png'], '-dpng');
+end

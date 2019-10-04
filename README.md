@@ -107,10 +107,10 @@ Society A: Mathematical, Physical and Engineering Sciences,
 # Contact
 John M. O' Toole
 
-INFANT: Irish Centre for Fetal and Neonatal Translational Research,  
+INFANT Research Centre, Ireland.
 Department of Paediatrics and Child Health,  
 Room 2.19, UCC Paediatric Academic Unit, Cork University Hospital,  
-University College Cork, Ireland
+University College Cork, Ireland.
 
 Email: jotoole AT ucc. ie
 
