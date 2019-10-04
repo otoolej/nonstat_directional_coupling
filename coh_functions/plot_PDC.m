@@ -37,7 +37,7 @@
 % John M. O' Toole, University College Cork
 % Started: 13-05-2019
 %
-% last update: Time-stamp: <2019-05-22 13:20:52 (otoolej)>
+% last update: Time-stamp: <2019-10-04 12:15:19 (otoolej)>
 %-------------------------------------------------------------------------------
 function plot_PDC(pdc_st, Fs, f_max)
 if(nargin < 3 || isempty(Fs)), Fs = 1; end
@@ -61,6 +61,8 @@ end
 figure(1);    
 clf; hold all;
 ord = [1 2; 2 1];
+c_darkred = [0.5430 0 0];
+c_lightblue = [0.6758 0.8438 0.8984];
 
 hax = zeros(1, 2);
 hp = zeros(1, 4);
@@ -79,9 +81,9 @@ for p = 1:2
         signif_thres = squeeze(pdc_st.th(n, m, k_freq));
     end
 
-    hp(3) = plot(freq, Cohxx, 'color', rgb('lightBlue'), 'linewidth', 2);    
+    hp(3) = plot(freq, Cohxx, 'color', c_darkred, 'linewidth', 2);    
     hp(1) = plot(freq, PDCxx, 'color', [1 1 1].*.8, 'linewidth', 2);
-    hp(2) = plot(freq, PDCxx_signif, 'color', rgb('darkRed'), 'linewidth', 2.5);
+    hp(2) = plot(freq, PDCxx_signif, 'color', c_lightblue, 'linewidth', 2.5);
     hp(4) = plot(freq, signif_thres, 'k--', 'linewidth', 2);
 
     

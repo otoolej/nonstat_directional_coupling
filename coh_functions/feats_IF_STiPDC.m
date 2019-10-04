@@ -49,7 +49,7 @@
 % John M. O' Toole, University College Cork
 % Started: 27-06-2018
 %
-% last update: Time-stamp: <2019-05-21 18:49:09 (otoolej)>
+% last update: Time-stamp: <2019-10-04 11:23:57 (otoolej)>
 %-------------------------------------------------------------------------------
 function [feat_st, if_P50] = feats_IF_STiPDC(pdc, Fs)
 if(nargin < 2 || isempty(Fs)), Fs = 1; end
@@ -88,8 +88,8 @@ feat_st.IF_P50_SD = nanstd(if_P50);
 if_x = if_P50;
 if_x(isnan(if_x)) = [];
 
-feat_st.IF_P50_Hactivity = hjorth_params(if_x, 'activity');
-feat_st.IF_P50_Hmobility = hjorth_params(if_x, 'mobility');
-feat_st.IF_P50_Hcomplexity = hjorth_params(if_x, 'complexity');
+feat_st.IF_P50_Hactivity = hjorth_feats(if_x, 'activity');
+feat_st.IF_P50_Hmobility = hjorth_feats(if_x, 'mobility');
+feat_st.IF_P50_Hcomplexity = hjorth_feats(if_x, 'complexity');
 
 

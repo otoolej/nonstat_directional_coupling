@@ -1,5 +1,5 @@
 %-------------------------------------------------------------------------------
-% hjorth_params: calculate parameters according to [1], presented in [2]
+% hjorth_feats: calculate parameters according to [1], presented in [2]
 %
 % Syntax: h = hjorth_feats(x, htype)
 %
@@ -40,7 +40,7 @@
 % John M. O' Toole, University College Cork
 % Started: 20-10-2017
 %
-% last update: Time-stamp: <2019-05-07 12:40:39 (otoolej)>
+% last update: Time-stamp: <2019-10-04 11:21:42 (otoolej)>
 %-------------------------------------------------------------------------------
 function h = hjorth_feats(x, htype)
 if(nargin<2 || isempty(htype)), htype = 'mobility'; end

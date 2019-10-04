@@ -22,7 +22,7 @@
 % John M. O' Toole, University College Cork
 % Started: 03-07-2018
 %
-% last update: Time-stamp: <2019-05-22 13:09:20 (otoolej)>
+% last update: Time-stamp: <2019-10-04 12:24:23 (otoolej)>
 %-------------------------------------------------------------------------------
 function time_traj_coupling_examples()
 
@@ -127,3 +127,11 @@ set(gca, 'position', [0.1282    0.1784    0.6238    0.7466]);
 xlabel('y \rightarrow x'); 
 ylabel('x\rightarrow y');    
 
+
+%---------------------------------------------------------------------
+% for docker testing
+%---------------------------------------------------------------------
+PRINT_PNG = 1;
+if(PRINT_PNG)
+    print(['./pics/docker_tests/time_traj_fig' num2str(CBAR) '.png'], '-dpng');
+end
