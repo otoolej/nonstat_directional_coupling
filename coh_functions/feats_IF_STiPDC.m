@@ -1,9 +1,9 @@
 %-------------------------------------------------------------------------------
-% feats_STiPDC: features of instantaneous frequency (IF) of the short-time information 
+% feats_IF_STiPDC: features of instantaneous frequency (IF) of the short-time information 
 %               partial directed coherence (ST-iPDC) function. From [1].
 %               
 %
-% Syntax: [feat_st, if_P50] = feats_STiPDC(pdc)
+% Syntax: [feat_st, if_P50] = feats_IF_STiPDC(pdc)
 %
 % Inputs: 
 %     pdc - ST-iPDC (N x N_freq) 
@@ -30,7 +30,8 @@
 %     pdc_st = shorttime_iPDC(x_st(1).x, L_win, overlap, {'x1', 'x2'}, 1);
 % 
 %     % generate the features of the IF from x1 -> x2 coupling:
-%     [feat_st, if_P50] = feats_STiPDC(pdc_st.pdc{2});
+%     [feat_st, if_P50] = feats_IF_STiPDC(pdc_st.pdc{2});
+%     disp(feat_st);
 %     
 %     % plot:
 %     figure(10); clf; hold all;
@@ -48,9 +49,9 @@
 % John M. O' Toole, University College Cork
 % Started: 27-06-2018
 %
-% last update: Time-stamp: <2019-05-21 16:39:01 (otoolej)>
+% last update: Time-stamp: <2019-05-21 18:49:09 (otoolej)>
 %-------------------------------------------------------------------------------
-function [feat_st, if_P50] = feats_STiPDC(pdc, Fs)
+function [feat_st, if_P50] = feats_IF_STiPDC(pdc, Fs)
 if(nargin < 2 || isempty(Fs)), Fs = 1; end
 
 

@@ -37,7 +37,7 @@
 % John M. O' Toole, University College Cork
 % Started: 30-05-2018
 %
-% last update: Time-stamp: <2019-05-07 14:38:59 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:22:03 (otoolej)>
 %-------------------------------------------------------------------------------
 function D = fd_curves(x, y, kmax, DBplot)
 if(nargin < 3 || isempty(kmax)), kmax = []; end
@@ -107,7 +107,8 @@ if(DBplot)
     y1 = log(L_avg);        
     c = polyfit(x1, y1, 1);
     
-    set_figure(56); clf;
+    figure(56); 
+    clf; hold all;
     lc = lines(8);    
     subplot(2, 1, 1); hold all;        
     xfit = linspace(min(x1), max(x1));

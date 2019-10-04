@@ -10,10 +10,12 @@
 %               functions [default = 128]
 %
 % Outputs: 
-%     pdc_st - output structure comprising of the following fields:
-%              .pdc = 2 coherence functions (cell)
-%              .pdc_names = string of the names of functions (cell)
-%              .ar_fit_ok = MVAR fit significant or not (logical vector)
+%     pdc_st     - output structure comprising of the following fields:
+%                    .pdc = 2 coherence functions (cell)
+%                    .pdc_names = string of the names of functions (cell)
+%                    .ar_fit_ok = MVAR fit significant or not (logical vector)
+%     pdc_tmp_st - structure from asymp_pdc.m (see asymp_package_v3 for more
+%                  details)
 %
 % Example:
 %     DBplot = 1;
@@ -43,9 +45,9 @@
 % John M. O' Toole, University College Cork
 % Started: 31-08-2017
 %
-% last update: Time-stamp: <2019-05-21 13:24:25 (otoolej)>
+% last update: Time-stamp: <2019-05-21 18:57:06 (otoolej)>
 %-------------------------------------------------------------------------------
-function [pdc_st] = do_PDC(x_all, N_freq, DBplot)
+function [pdc_st, pdc_tmp_st] = do_PDC(x_all, N_freq, DBplot)
 if(nargin < 2 || isempty(N_freq)), N_freq = 128; end
 if(nargin < 3 || isempty(DBplot)), DBplot = 0; end
 

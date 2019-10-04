@@ -1,5 +1,5 @@
 %-------------------------------------------------------------------------------
-% plot_PDC: plot iPDC functions (bivariate only)
+% plot_PDC: plot iPDC functions (bivariate only) from asymp_package_v3 toolbox [1,2]
 %
 % Syntax: plot_PDC(pdc_st, Fs)
 %
@@ -9,12 +9,35 @@
 %     Fs     - sample frequency (in Hz) [default = 1]
 %     f_max  - plot upto this maximum frequency [default = Fs/2]
 %
+% Outputs:
+%     none
+% 
+% Example:
+%     N_freq = 256;
+%     N = 1000;
+% 
+%     x_st = gen_syth_test_signals(N, 1, 'nonstat2');
+%     [~, pdc_st] = do_PDC(x_st(1).x, N_freq);
+% 
+%     plot_PDC(pdc_st);
 %
+% 
+% 
+% [1] Baccala, L. A., Takahashi, D. Y., & Sameshima, K. (2016). Directed Transfer
+% Function: Unified Asymptotic Theory and Some of its Implications. IEEE Transactions on
+% Biomedical Engineering, 63(12), 2450–2460. https://doi.org/10.1109/TBME.2016.2550199
+% 
+% [2] Baccala, L. A., de Brito, C. S. N., Takahashi, D. Y., & Sameshima,
+% K. (2013). Unified asymptotic theory for all partial directed coherence
+% forms. Philosophical Transactions of the Royal Society A: Mathematical, Physical and
+% Engineering Sciences, 371(1997), 20120158. https://doi.org/10.1098/rsta.2012.0158
+
+
 
 % John M. O' Toole, University College Cork
 % Started: 13-05-2019
 %
-% last update: Time-stamp: <2019-05-13 15:37:31 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:20:52 (otoolej)>
 %-------------------------------------------------------------------------------
 function plot_PDC(pdc_st, Fs, f_max)
 if(nargin < 3 || isempty(Fs)), Fs = 1; end
@@ -35,7 +58,8 @@ end
 
 
 
-set_figure(1);    
+figure(1);    
+clf; hold all;
 ord = [1 2; 2 1];
 
 hax = zeros(1, 2);

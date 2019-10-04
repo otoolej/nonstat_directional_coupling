@@ -1,5 +1,6 @@
 %-------------------------------------------------------------------------------
-% gen_syth_test_signals: generate non-stationary bivariate AR signals. see [1] for details.
+% gen_syth_test_signals: generate non-stationary bivariate AR signals. 
+%                        See [1] for details.
 %
 % Syntax: x_st = gen_syth_test_signals(N, N_iter, artype)
 %
@@ -23,7 +24,7 @@
 %     plot(x_st(1).x(2, :));
 %
 % 
-% [3] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
+% [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
 % perfusion index in extremely preterm infants over the first day of life”, in
 % preparation, 2019.
 
@@ -33,7 +34,7 @@
 % John M. O' Toole, University College Cork
 % Started: 25-06-2018
 %
-% last update: Time-stamp: <2019-05-07 14:42:29 (otoolej)>
+% last update: Time-stamp: <2019-05-21 18:46:37 (otoolej)>
 %-------------------------------------------------------------------------------
 function [x_st, b, c] = gen_syth_test_signals(N, N_iter, artype)
 if(nargin<1 || isempty(N)), N = 5000; end

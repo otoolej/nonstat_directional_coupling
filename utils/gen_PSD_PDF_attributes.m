@@ -43,11 +43,11 @@
 % Find expected value using cdf, URL (version: 2017-10-10): 
 % https://stats.stackexchange.com/q/307220
 % from: StijnDeVuyst (https://stats.stackexchange.com/users/71524/stijndevuyst),
-
+% 
 % John M. O' Toole, University College Cork
 % Started: 01-12-2017
 %
-% last update: Time-stamp: <2019-05-21 15:22:53 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:10:11 (otoolej)>
 %-------------------------------------------------------------------------------
 function feats_st = gen_PSD_PDF_attributes(P_xx, attributes, freq_range, Fs)
 if(nargin < 2 || isempty(attributes)),  attributes = {'mean', 'P95'}; end

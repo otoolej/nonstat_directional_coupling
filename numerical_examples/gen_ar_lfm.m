@@ -16,11 +16,16 @@
 %     x_st = gen_ar_lfm(1024, 10, 'nlfm', DBplot);
 %    
 %
+% 
+% [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
+% perfusion index in extremely preterm infants over the first day of life”, in
+% preparation, 2019.
+
 
 % John M. O' Toole, University College Cork
 % Started: 26-06-2018
 %
-% last update: Time-stamp: <2019-05-07 15:53:26 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:09:50 (otoolej)>
 %-------------------------------------------------------------------------------
 function x_st = gen_ar_lfm(N, N_iter, fmtype, DBplot)
 if(nargin < 1 || isempty(N)), N = 1024; end

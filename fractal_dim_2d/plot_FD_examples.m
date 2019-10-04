@@ -3,9 +3,15 @@
 %                         (Figure 2 in [1])
 %
 % Syntax: plot_FD_examples()
-%
+% 
+% Inputs: 
+%     none
+% 
+% Outputs: 
+%     none
+% 
 % Example:
-%          >> plot_FD_examples;
+%         plot_FD_examples;
 % 
 % 
 % [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
@@ -16,9 +22,10 @@
 % John M. O' Toole, University College Cork
 % Started: 06-06-2018
 %
-% last update: Time-stamp: <2019-05-13 15:42:55 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:13:53 (otoolej)>
 %-------------------------------------------------------------------------------
 function [] = plot_FD_examples()
+
 
 %---------------------------------------------------------------------
 % 1. generate the signals

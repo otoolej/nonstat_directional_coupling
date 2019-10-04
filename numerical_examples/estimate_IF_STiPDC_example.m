@@ -16,7 +16,7 @@
 %     estimate_IF_STiPDC_example;
 %
 % 
-% [3] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
+% [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
 % perfusion index in extremely preterm infants over the first day of life”, in
 % preparation, 2019.
 
@@ -24,7 +24,7 @@
 % John M. O' Toole, University College Cork
 % Started: 28-06-2018
 %
-% last update: Time-stamp: <2019-05-21 16:44:09 (otoolej)>
+% last update: Time-stamp: <2019-05-22 15:49:02 (otoolej)>
 %-------------------------------------------------------------------------------
 function [] = estimate_IF_STiPDC_example()
 
@@ -94,7 +94,7 @@ function if_est = do_PDCs_IFs(x_st, L_win, overlap)
 % generate ST-iPDC and estimate IF
 %---------------------------------------------------------------------
 pdc_st = shorttime_iPDC(x_st.x, L_win, overlap);
-[~, if_est] = feats_STiPDC(pdc_st.pdc{2});    
+[~, if_est] = feats_IF_STiPDC(pdc_st.pdc{2});    
 
 
 
@@ -104,6 +104,10 @@ function plot_IFestimates_fromMat(N, params)
 % plot the IF estimates 
 %---------------------------------------------------------------------
 figure(32); 
+clf; hold all;
+pp = get(gcf, 'position');
+set(gcf, 'position', [pp(1:2) 420  260]);
+
 
 all_IFs = params.all_IFs;
 fn = params.fn;
@@ -130,6 +134,7 @@ ylabel('frequency (Hz)');
 set(gca, 'ytick', [0.1:0.1:0.5]);
 ylim([0 0.5]);
 
+keyboard;
 hleg = legend([hl(end) hest hfn], {'IF estimate (each iteration)', ...
                     'IF estimate (mean)', 'true IF'});
 hleg.Position = [0.2741 0.2528 0.4778 0.2174];

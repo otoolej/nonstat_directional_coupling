@@ -1,6 +1,6 @@
 %-------------------------------------------------------------------------------
 % shorttime_iPDC: short-time information partial directed coherence (STiPDC)
-%                 (BI-VARIATE ONLY)
+%                 (BI-VARIATE ONLY). From [1].
 %
 % Syntax: pdc_st = shorttime_iPDC(x_st)
 %
@@ -21,24 +21,28 @@
 %              .ar_fit_ok = MVAR fit significant or not (logical vector)
 % 
 % 
-
 %
 % Example:
 %       N = 5000; 
 %       L_win = 150; 
 %       overlap = 50;
+%       DBplot = 1;
 %       
 %       x_st = gen_syth_test_signals(N, 1, 'nonstat3');
 %       
-%       pdc_st = shorttime_iPDC(x_st(1).x, L_win, overlap, {'x1', 'x2'}, 1); 
+%       pdc_st = shorttime_iPDC(x_st(1).x, L_win, overlap, {'x1', 'x2'}, DBplot); 
 % 
-% 
+%
+% [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
+% perfusion index in extremely preterm infants over the first day of life”, in
+% preparation, 2019.
+
 
 
 % John M. O' Toole, University College Cork
 % Started: 25-06-2018
 %
-% last update: Time-stamp: <2019-05-13 15:22:58 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:24:49 (otoolej)>
 %-------------------------------------------------------------------------------
 function pdc_st = shorttime_iPDC(x, L_win, L_overlap, names_str, DBplot)
 if(nargin < 2 || isempty(L_win)), L_win = 100; end
@@ -97,7 +101,8 @@ pdc_st.ar_fit_ok = ar_fit_ok;
 % plot the two coherence functions:
 %---------------------------------------------------------------------
 if(DBplot)
-    set_figure(21); 
+    figure(21); 
+    clf; hold all;
     [N_time, N_freq] = size(coh1);
     nn = 1:N_time;
     

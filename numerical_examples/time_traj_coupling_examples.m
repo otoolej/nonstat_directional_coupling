@@ -1,37 +1,42 @@
 %-------------------------------------------------------------------------------
-% time_traj_coupling_examples: 
+% time_traj_coupling_examples: Examples of different time-varying coupling and
+%                              associated features. Figure 4B and 4C in [1].
+% 
 %
-% Syntax: []=time_traj_coupling_examples()
+% Syntax: time_traj_coupling_examples()
 %
 % Inputs: 
-%      - 
+%     none
 %
 % Outputs: 
-%     [] - 
+%     none
 %
 % Example:
-%     
+%     time_traj_coupling_examples;
 %
+% 
+% [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
+% perfusion index in extremely preterm infants over the first day of life”, in
+% preparation, 2019.
 
 % John M. O' Toole, University College Cork
 % Started: 03-07-2018
 %
-% last update: Time-stamp: <2018-08-30 12:14:18 (otoolej)>
+% last update: Time-stamp: <2019-05-22 13:09:20 (otoolej)>
 %-------------------------------------------------------------------------------
-function []=time_traj_coupling_examples(PRINT_)
-if(nargin<1 || isempty(PRINT_)), PRINT_=0; end
+function time_traj_coupling_examples()
 
-
-pi_parameters;
 
 N = 5000; N_iter = 1;
 L_win = 150; overlap = 50;
 
 
-% 0. generate signals and ST-iPDCs
-ft3 = do_traj(N, N_iter, L_win, overlap, 'nonstat3', 0, PRINT_);
-ft4 = do_traj(N, N_iter, L_win, overlap, 'nonstat4', 1, PRINT_);
+% 1. generate signals and ST-iPDCs and coupling trajectories:
+ft3 = do_traj(N, N_iter, L_win, overlap, 'nonstat2', 0);
+ft4 = do_traj(N, N_iter, L_win, overlap, 'nonstat3', 1);
 
+
+% 2. show summary features of this coupling:
 fprintf('\n** Example 2:\n');
 fn = fieldnames(ft3);
 for n = 1:length(fn)
@@ -46,76 +51,51 @@ end
 
 
 
-function ft = do_traj(N, N_iter, L_win, overlap, type, cbar, PRINT_)
+function ft = do_traj(N, N_iter, L_win, overlap, type, cbar)
 %---------------------------------------------------------------------
 % generate PDCs and print
 %---------------------------------------------------------------------
-[y_st, b, c]= gen_syth_test_signals(N, N_iter, type);
-pdc_st = shorttime_iPDC(y_st(1), L_win, overlap);
+x_st = gen_syth_test_signals(N, N_iter, type);
+pdc_st = shorttime_iPDC(x_st(1).x, L_win, overlap);
 
 ft = traj_coupling_xy(pdc_st.pdc{1}, pdc_st.pdc{2}, N, cbar);
 
-fn = fieldnames(ft);
-for n = 1:length(fn)
-    fprintf('feature %s = %g\n', fn{n}, ft.(char(fn{n})));
-end
-
-
-if(PRINT_)
-    pi_parameters;
-    print2eps([PIC_DIR 'traj_coup_' type '_v1.eps']);
-end
 
 
 
-
-function feat_st=traj_coupling_xy(coh1, coh2, N, CBAR)
+function feat_st = traj_coupling_xy(coh1, coh2, N, CBAR)
 %---------------------------------------------------------------------
 % track trajectory of coupling between x and y
 %---------------------------------------------------------------------
-FONT_NAME = 'helvetica';
-FONT_SIZE = 11;
-
-%---------------------------------------------------------------------
-% 
-%---------------------------------------------------------------------
 [P, Q] = size(coh1);
+
 
 coh1(isnan(coh1)) = 0;    
 coh2(isnan(coh2)) = 0;
 
 hr_pi_coords = NaN(P, 2);
 
+%---------------------------------------------------------------------
+% estimate the centroid with magnitude/angle:
+%---------------------------------------------------------------------
 irem = [];
 for p = 1:P    
     hr_pi_coords(p, 1) = trapz(coh1(p, :)) / Q;
     hr_pi_coords(p, 2) = trapz(coh2(p, :)) / Q;
 end    
 
-% up-sample:
-% $$$ N = size(hr_pi_coords, 1);
-% $$$ hr_pi_UP(:, 1) = interp1(1:N, hr_pi_coords(:, 1), 1:0.1:N);
-% $$$ hr_pi_UP(:, 2) = interp1(1:N, hr_pi_coords(:, 2), 1:0.1:N);
-% $$$ 
-% $$$ hr_pi_coords = hr_pi_UP;
-% $$$ N = size(hr_pi_coords, 1);
-% $$$ P = N;
-
-if(~isempty(find(isnan(hr_pi_coords))))
-    keyboard;
-end
-
-% $$$ keyboard;
 av_co(1) = mean(hr_pi_coords(:, 1));
 av_co(2) = mean(hr_pi_coords(:, 2));    
 
-feat_st.d = fd_curves([(hr_pi_coords(:, 1))], (hr_pi_coords(:, 2)), 'higuchi', 6);    
+
 feat_st.mag = (sqrt(av_co(1) .^ 2 + av_co(2) .^ 2));
 feat_st.angle = acos(av_co(1) / sqrt(av_co(1) .^ 2 + av_co(2) .^ 2));        
 
 
-
-set_figure(67 + CBAR); 
+%---------------------------------------------------------------------
+% plot:
+%---------------------------------------------------------------------
+figure(67 + CBAR); clf; hold all;
 pp = get(gcf, 'position');
 set(gcf, 'position', [pp(1:2) 420  260]);
 
@@ -141,17 +121,9 @@ ylim([0 0.6]);
 %  include colorbar:
 if(CBAR)
     hcol = colorbar;
-    xlabel(hcol, 'time (seconds)', ...
-           'fontname', FONT_NAME, 'fontsize', FONT_SIZE);
-    set(hcol, 'fontname', FONT_NAME, 'fontsize', FONT_SIZE);
+    xlabel(hcol, 'time (seconds)');
 end
-
-
 set(gca, 'position', [0.1282    0.1784    0.6238    0.7466]);
+xlabel('y \rightarrow x'); 
+ylabel('x\rightarrow y');    
 
-
-
-
-xlabel('y \rightarrow x'); ylabel('x\rightarrow y');    
-
-set_gca_fonts(FONT_NAME, FONT_SIZE)
