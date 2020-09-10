@@ -6,6 +6,9 @@ Matlab code to generate the feature set used in the publication:
 `JM O'Toole, EM Dempsey, D Van Laere, Nonstationary coupling between heart rate and
 perfusion index in extremely preterm infants in the first day of life, under review, 2020.`
 
+---
+
+[Requirements](#requires) | [Examples](#examples) | [References](#references) | [Contact](#contact)
 
 # Requires
   As Matlab code requires [Matlab](https://uk.mathworks.com/products/matlab.html). Not

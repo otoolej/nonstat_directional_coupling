@@ -38,13 +38,13 @@
 %
 % [1] JM O'Toole, EM Dempsey, D Van Laere, “Nonstationary coupling between heart rate and
 % perfusion index in extremely preterm infants over the first day of life”, in
-% preparation, 2019.
+% preparation, 2020.
 
 
 % John M. O' Toole, University College Cork
 % Started: 21-05-2019
 %
-% last update: Time-stamp: <2019-05-22 13:23:35 (otoolej)>
+% last update: Time-stamp: <2020-09-10 14:13:24 (otoolej)>
 %-------------------------------------------------------------------------------
 function feat_st = feats_direction_coupling_STiPDC(st_pdc1, st_pdc2, DBplot)
 if(nargin < 2)
