@@ -4,8 +4,7 @@ Features of Nonstationary Directional Coupling
 Matlab code to generate the feature set used in the publication:
 
 `JM O'Toole, EM Dempsey, D Van Laere, Nonstationary coupling between heart rate and
-perfusion index in extremely preterm infants over the first day of life, in
-preparation, 2019.`
+perfusion index in extremely preterm infants in the first day of life, under review, 2020.`
 
 
 # Requires
@@ -22,8 +21,7 @@ preparation, 2019.`
   path](https://uk.mathworks.com/help/matlab/matlab_env/add-remove-or-reorder-folders-on-the-search-path.html)
   for more details. 
   
-  Next, add to the path for this project (`nonstat_directional_coupling`) and you should
-  be good to go.
+  Next, add to the path for this project and you should be good to go.
 
 
 # Main Functions
