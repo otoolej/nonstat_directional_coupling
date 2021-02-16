@@ -45,7 +45,7 @@
 % John M. O' Toole, University College Cork
 % Started: 31-08-2017
 %
-% last update: Time-stamp: <2019-05-21 18:57:06 (otoolej)>
+% last update: Time-stamp: <2021-02-16 16:13:22 (otoolej)>
 %-------------------------------------------------------------------------------
 function [pdc_st, pdc_tmp_st] = do_PDC(x_all, N_freq, DBplot)
 if(nargin < 2 || isempty(N_freq)), N_freq = 128; end
@@ -66,20 +66,14 @@ if(exist('asymp_pdc', 'file') ~= 2)
     fprintf('Need to install ''asymp_PDC'' toolbox. \n');
     fprintf('Download from http://www.lcs.poli.usp.br/~baccala/pdc/\n');
     fprintf('__________ ***|\n' );
-    % error('install software. see previous message.');
-
-    % TMP!!!!
-    aph('/home/otoolej/ucc/software/toolboxes/asymp_package_v3/');
+    error('install software. see previous message.');
 end
 if(exist('arfit','file') ~= 2)
     fprintf('|*** __________\n' );
     fprintf('Need to install ''arfit'' toolbox. \n');
     fprintf('Download from https://github.com/tapios/arfit\n');
     fprintf('__________ ***|\n' );
-    % error('install software. see previous message.');
-
-    % TMP !!!!
-    aph('/home/otoolej/ucc/software/toolboxes/arfit/');
+    error('install software. see previous message.');
 end
 
 
